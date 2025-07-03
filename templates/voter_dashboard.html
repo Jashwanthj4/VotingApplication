@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Voter Dashboard{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Welcome, Voter!</h2>
+  {% if has_voted %}
+    <div class="alert alert-info mt-3">You have already cast your vote.</div>
+    <a href="{{ url_for('voting_status') }}" class="btn btn-primary mt-3">View Voting Status</a>
+  {% else %}
+    <a href="{{ url_for('cast_vote') }}" class="btn btn-success mt-3">Cast Your Vote</a>
+  {% endif %}
+  <a href="{{ url_for('logout') }}" class="btn btn-secondary mt-3">Logout</a>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Voters List{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Registered Voters</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for voter in voters %}
+        <tr>
+          <td>{{ voter.name }}</td>
+          <td>{{ voter.email }}</td>
+          <td>
+            {% if voter.email in voted_emails %}
+              <span class="badge badge-success">Voted</span>
+            {% else %}
+              <span class="badge badge-warning">Not Voted</span>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+</div>
+{% endblock %}

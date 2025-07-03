@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Cast Your Vote{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Cast Your Vote</h2>
+  <form method="POST" action="{{ url_for('cast_vote') }}">
+    {{ csrf_token() }}
+    {% for candidate in candidates %}
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="candidate_id" id="candidate{{ loop.index }}"
+               value="{{ candidate._id }}" required>
+        <label class="form-check-label" for="candidate{{ loop.index }}">
+          {{ candidate.name }} - {{ candidate.position }}
+        </label>
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-3">Submit Vote</button>
+  </form>
+</div>
+{% endblock %}

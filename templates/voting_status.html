@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Voting Status{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Voting Status</h2>
+  {% if vote %}
+    <p>You have voted for:</p>
+    <h4>{{ candidate.name }} ({{ candidate.position }})</h4>
+    <p class="text-muted">Vote cast on: {{ vote.time.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+  {% else %}
+    <div class="alert alert-warning">You have not cast your vote yet.</div>
+  {% endif %}
+  <a href="{{ url_for('voter_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

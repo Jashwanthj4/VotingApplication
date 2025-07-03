@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2>User Profile</h2>
+  <table class="table table-bordered mt-4">
+    <tr><th>Name</th><td>{{ user.name }}</td></tr>
+    <tr><th>Email</th><td>{{ user.email }}</td></tr>
+    <tr><th>Role</th><td>{{ user.role }}</td></tr>
+  </table>
+  <a href="{{ url_for('logout') }}" class="btn btn-secondary mt-3">Logout</a>
+</div>
+{% endblock %}
